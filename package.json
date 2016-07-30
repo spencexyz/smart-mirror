@@ -1,0 +1,24 @@
+{
+  "name": "magic-mirror-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard for \"Magic Mirror\" project. Displays weather, transit, news and other info.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "node-fetch": "^1.5.3",
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanNordness/magic-mirror-dashboard.git"
+  },
+  "author": "Dan Nordness <daniel0524@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanNordness/magic-mirror-dashboard/issues"
+  },
+  "homepage": "https://github.com/DanNordness/magic-mirror-dashboard#readme"
+}
