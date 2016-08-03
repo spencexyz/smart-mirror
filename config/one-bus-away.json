@@ -1,0 +1,28 @@
+{
+  "stopsToDisplay": [
+    {
+      "displayName": "15th Ave NW & NW 60th St",
+      "stopId": "1_13700",
+      "routesToDisplay": [
+        {
+          "displayName": "D",
+          "routeId": "1_102581"
+        }
+      ]
+    },
+    {
+      "displayName": "15th Ave NW & NW 65th St",
+      "stopId": "1_13670",
+      "routesToDisplay": [
+        {
+          "displayName": "D",
+          "routeId": "1_102581"
+        },
+        {
+          "displayName": "15X",
+          "routeId": "1_100044"
+        }
+      ]
+    }
+  ]
+}
