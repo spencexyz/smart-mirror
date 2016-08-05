@@ -4,7 +4,7 @@ var departureDate;
 var routeDisplayName;
 
 function DepartureData(departureDate, routeDisplayName) {
-  this.departure = departure;
+  this.departureDate = departureDate;
   this.routeDisplayName = routeDisplayName;
 }
 
