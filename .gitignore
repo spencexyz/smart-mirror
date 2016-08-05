@@ -38,3 +38,7 @@ jspm_packages
 
 # keys
 keys.json
+
+# Ruby
+.sass-cache/
+public/
