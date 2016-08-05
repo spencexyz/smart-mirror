@@ -10,7 +10,7 @@ var CONFIG = require('../../config/one-bus-away.json');
 var BASE_URL = 'http://api.pugetsound.onebusaway.org/api/where';
 var ARRIVALS_AND_DEPARTURES_ENDPOINT = '/arrivals-and-departures-for-stop';
 
-var constructDeparturesURLForStop = function(stopId) {
+var constructArrivalsAndDeparturesForStopURL = function(stopId) {
   var url = BASE_URL + ARRIVALS_AND_DEPARTURES_ENDPOINT + '/' + stopId + '.json?key=' + API_KEY;
   console.log(url);
   return url;
@@ -22,10 +22,10 @@ var GETFromEndpoint = function(url) {
   })
 }
 
-var retrieveDepartureDataForStops = function() {
+var callArrivalsAndDeparturesForStopEndpoint = function() {
   var promisedResults = [];
   _(CONFIG.stopsToDisplay).forEach(function(stop) {
-    var url = constructDeparturesURLForStop(stop.stopId);
+    var url = constructArrivalsAndDeparturesForStopURL(stop.stopId);
     promisedResults.push(GETFromEndpoint(url));
   });
 
@@ -34,6 +34,6 @@ var retrieveDepartureDataForStops = function() {
 
 module.exports = {
   retrieve: function() {
-    return retrieveDepartureDataForStops();
+    return callArrivalsAndDeparturesForStopEndpoint();
   }
 }

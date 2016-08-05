@@ -6,7 +6,8 @@
   "dependencies": {
     "express": "^4.14.0",
     "lodash": "^4.14.1",
-    "node-fetch": "^1.5.3"
+    "node-fetch": "^1.5.3",
+    "pug": "^2.0.0-beta4"
   },
   "devDependencies": {},
   "scripts": {

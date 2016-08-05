@@ -1,23 +1,17 @@
-"use strict";
-
-var _ = require('lodash');
+'use strict';
 
 var express = require('express');
 var app = express();
 
-var transit = require('./services/transit')
-
+app.set('view engine', 'pug');
+app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-  res.send("Ni Hao!");
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
 
-app.get('/transit', function(req, res) {
-  var callback = _.bind(function(data) {
-    res.send(data);
-  }, this, _);
-  transit.get(callback);
-});
+var transit = require('./routes/transit');
+app.use('/transit', transit);
 
 app.listen(4000, function () {
   console.log('Magic Mirror Dashboard on Port 4000!');
