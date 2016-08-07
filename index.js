@@ -13,6 +13,9 @@ app.get('/', function (req, res) {
 var transit = require('./routes/transit');
 app.use('/transit', transit);
 
+var headlines = require('./routes/headlines');
+app.use('/headlines', headlines);
+
 var weather = require('./routes/weather');
 app.use('/weather', weather);
 
