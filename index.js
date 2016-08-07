@@ -13,6 +13,9 @@ app.get('/', function (req, res) {
 var transit = require('./routes/transit');
 app.use('/transit', transit);
 
+var weather = require('./routes/weather');
+app.use('/weather', weather);
+
 app.listen(4000, function () {
   console.log('Magic Mirror Dashboard on Port 4000!');
 });

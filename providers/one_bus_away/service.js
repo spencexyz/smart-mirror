@@ -4,7 +4,7 @@ var _ = require('lodash');
 
 var fetch = require('node-fetch');
 
-var API_KEY = require('../../config/keys.json').one_bus_away.secret;
+var API_KEY = require('../../config/keys-one-bus-away.json').one_bus_away.secret;
 var CONFIG = require('../../config/one-bus-away.json');
 
 var BASE_URL = 'http://api.pugetsound.onebusaway.org/api/where';
