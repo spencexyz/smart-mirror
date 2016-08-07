@@ -1,4 +1,6 @@
 var $ = require('jquery');
+var $container = $('#forecast-io');
+var color = '#FFFFFF';
 
 (function(e, t) {
     function _(e) {
@@ -3857,10 +3859,10 @@ StaticSkycons.RAIN = "rain", StaticSkycons.SNOW = "snow", StaticSkycons.SLEET = 
 var ForecastEmbed = function(e) {
     var t = {},
         n, r, i, s = function() {
-            n = $('      <div id="forecast_embed" class="fe_container">         <div class="fe_title" style="display:none">           <span class="fe_location">             <span></span>           </span>                      <span class="fe_forecast_link">             <span class="pre">More at </span><a target="_blank" href="http://forecast.io">Forecast.io</a>           </span>         </div>                  <div class="fe_forecast">           <div class="fe_currently">             <canvas id="fe_current_icon" width="160" height="160" style="width:80px; height:80px"></canvas>             <div class="fe_temp"></div>             <div class="fe_summary"></div>             <div class="fe_wind"></div>           </div>                      <div class="fe_daily"></div>           <div style="clear:left"></div>         </div>                  <div class="fe_alert" style="display:none"></div>                  <div class="fe_loading" style="display:none">           <canvas id="fe_loading_icon" width="100" height="100" style="width:50px; height:50px"></canvas>           Loading...         </div>       </div>     '), t.elem = n, e.static_skycons && (window.Skycons = StaticSkycons), r = new Skycons({
-                color: e.text_color || "#333"
+            n = $('      <div id="forecast_embed" class="fe_container">         <div class="fe_title" style="display:none">           <span class="fe_location">             <span></span>           </span>                              </div>                  <div class="fe_forecast">           <div class="fe_currently">             <canvas id="fe_current_icon" width="160" height="160" style="width:80px; height:80px"></canvas>             <div class="fe_temp"></div>             <div class="fe_summary"></div>             <div class="fe_wind"></div>           </div>                      <div class="fe_daily"></div>           <div style="clear:left"></div>         </div>                  <div class="fe_alert" style="display:none"></div>                  <div class="fe_loading" style="display:none">           <canvas id="fe_loading_icon" width="100" height="100" style="width:50px; height:50px"></canvas>           Loading...         </div>       </div>     '), t.elem = n, e.static_skycons && (window.Skycons = StaticSkycons), r = new Skycons({
+                color: e.text_color || color
             }), i = new Skycons({
-                color: e.text_color || "#333"
+                color: e.text_color || color
             }), e.hide_header ? n.find(".fe_title").remove() : (n.find(".fe_title .fe_location span").html(e.title), n.find(".fe_title").show());
             if (e.ff_name && e.ff_url) {
                 var s = document.createElement("style");
@@ -3916,7 +3918,7 @@ var ForecastEmbed = function(e) {
                 c = r.clone(), l = a[t], g = v * (l.temperatureMax - l.temperatureMin) / m, y = v * (h - l.temperatureMax) / m, c.find(".fe_label").html(t == 0 ? "Today" : s[(o + t) % 7]), c.find(".fe_high_temp").html(Math.round(l.temperatureMax) + "&deg;"), c.find(".fe_low_temp").html(Math.round(l.temperatureMin) + "&deg;"), c.find(".fe_temp_bar").css({
                     height: g,
                     top: y,
-                    "background-color": e.color || "#333"
+                    "background-color": e.color || color
                 }), typeof FlashCanvas != "undefined" && FlashCanvas.initElement(c.find("canvas")[0]), c.find(".fe_icon").attr("id", "fe_day_icon" + t), setTimeout(function() {
                     i.set("fe_day_icon" + t, u(a[t].icon))
                 }, 0), c.appendTo($daily_container)
@@ -3953,60 +3955,12 @@ ForecastEmbed.unit_labels = {
 };
 
 window.onload = function() {
-  debugger;
   //hardcoding for now
   var lat = 47.6062;
   var lon = -122.3321;
   var name = "Seattle, WA";
-  var $container = $('#forecast-io');
   var opts = {};
-
-  // Parse hash params
-  var param_strs = (''+window.location.hash).substr(1).split('&'),
-      param_str, key, val,
-      params = {}
-
-  for(var i = param_strs.length; i--; ) {
-    param_str = param_strs[i].split('=')
-    if(!param_str || param_str.length != 2) continue
-
-    key = $.trim(param_str[0]).toLowerCase()
-    val = decodeURIComponent($.trim(param_str[1]))
-
-    if(key == 'lat' || key == 'latitude')
-      lat = +val
-    else if(key == 'lon' || key == 'longitude')
-      lon = +val
-    else if(key == 'name')
-      name = val
-    else if(key == 'color')
-      opts.color = val
-    else if(key == 'text-color')
-      opts.text_color = val
-    else if(key == 'font')
-      opts.font = val
-    else if(key == 'font-face-name')
-      opts.ff_name = val
-    else if(key == 'font-face-url')
-      opts.ff_url = val
-    else if(key == 'units')
-      opts.units = val.toLowerCase()
-    else if(key == 'static-skycons')
-      opts.static_skycons = true
-    else if(key == 'hide-header')
-      opts.hide_header = true
-  }
-
-  if(name)
-    opts.title = '<span class="pre">Weather for </span>'+name
-  else
-    opts.title = 'Weather'
-
-  if(lat == null || lon == null)
-    opts.title = 'Invalid Location'
-
-  if(!ForecastEmbed.unit_labels[opts.units])
-    opts.units = 'us'
+  opts.hide_header = true
 
   var embed = new ForecastEmbed(opts)
   embed.elem.prependTo($container);
