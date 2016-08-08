@@ -1,7 +1,9 @@
 @import "compass";
 @import "./third_party/forecast_io";
+@import "./layout";
 
 body {
+  font-family: 'PT Sans', sans-serif;
   background-color: black;
   color: white;
 }
