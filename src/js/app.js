@@ -1,6 +1,6 @@
 'use strict';
 
-require('./third_party/forecast-io.js');
+require('./modules/weather.js');
 require('./modules/clock.js');
 require('./modules/transit.js');
 require('./modules/headlines.js');
