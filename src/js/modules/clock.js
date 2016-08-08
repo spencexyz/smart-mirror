@@ -1,6 +1,6 @@
 var $ = require('jquery');
 
-var REFRESH_INTERVAL_MS = 500;
+var REFRESH_INTERVAL_HALF_SECOND_IN_MS = 500;
 
 var $container = $('.Layout--Clock');
 var $hour = $container.find('.Clock--hour')[0];
@@ -63,7 +63,7 @@ var startClockRenderInterval = function() {
     $dayOfWeek.innerHTML = dayOfWeek;
     $month.innerHTML = month;
     $dayOfMonth.innerHTML = dayOfMonth;
-    setTimeout(renderClockWidget, REFRESH_INTERVAL_MS);
+    setTimeout(renderClockWidget, REFRESH_INTERVAL_HALF_SECOND_IN_MS);
   }
 
   renderClockWidget();

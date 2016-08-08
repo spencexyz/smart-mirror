@@ -4,7 +4,7 @@ var Mustache = require('mustache');
 var $ = require('jquery');
 var _ = require('lodash');
 
-var REFRESH_INTERVAL_MS = 600000;
+var REFRESH_INTERVAL_10_MINUTES_IN_MS = 600000;
 
 var $container = $('.Layout--Headlines')[0];
 
@@ -36,7 +36,7 @@ var startHeadlineRenderRefresh = function() {
       dataType: 'json'
     });
 
-    setTimeout(renderHeadlines, REFRESH_INTERVAL_MS);
+    setTimeout(renderHeadlines, REFRESH_INTERVAL_10_MINUTES_IN_MS);
   }
 
   renderHeadlines();

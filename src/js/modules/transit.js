@@ -5,7 +5,9 @@ var $ = require('jquery');
 var _ = require('lodash');
 
 var NOW = 'Now';
-var REFRESH_INTERVAL_MS = 1000;
+
+//30 Seconds
+var REFRESH_INTERVAL_30_SECONDS_IN_MS = 30 * 1000;
 
 var $container = $('.Layout--Transit')[0];
 
@@ -91,7 +93,7 @@ var startTransitRenderRefresh = function() {
       dataType: 'json'
     });
 
-    setTimeout(renderTransitData, REFRESH_INTERVAL_MS);
+    setTimeout(renderTransitData, REFRESH_INTERVAL_30_SECONDS_IN_MS);
   }
 
   renderTransitData();
