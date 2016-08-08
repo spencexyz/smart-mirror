@@ -4,7 +4,7 @@ var Mustache = require('mustache');
 var $ = require('jquery');
 var _ = require('lodash');
 
-var NOW = 'Now';
+var REFRESH_INTERVAL_MS = 600000;
 
 var $container = $('.Layout--Headlines')[0];
 
@@ -18,22 +18,30 @@ var template =    '<ul class="Headlines--list">' +
                     '{{/headlines}}' +
                   '</ul>';
 
-var success = function(data) {
-  var view = {
-    headlines: (data.data)
-  };
-  var output = Mustache.render(template, view);
-  $container.innerHTML = output;
+var startHeadlineRenderRefresh = function() {
+  var handleGetHeadlinesSuccess = function(data) {
+    var view = {
+      headlines: (data.data)
+    };
+    var output = Mustache.render(template, view);
+    $container.innerHTML = output;
+  }
+
+  var renderHeadlines = function() {
+    var url = '/headlines';
+
+    $.ajax({
+      url: url,
+      success: handleGetHeadlinesSuccess,
+      dataType: 'json'
+    });
+
+    setTimeout(renderHeadlines, REFRESH_INTERVAL_MS);
+  }
+
+  renderHeadlines();
 }
 
-var refreshHeadlines = function() {
-  var url = '/headlines';
-
-  $.ajax({
-    url: url,
-    success: success,
-    dataType: 'json'
-  });
-}
-
-refreshHeadlines();
+$(document).ready(function() {
+  startHeadlineRenderRefresh();
+});

@@ -8,10 +8,16 @@ var REFRESH_INTERVAL_MS = 600000;
 
 var forcastIO = require('../third_party/forecast-io');
 
-var renderWeatherWidget = function() {
-  $container.empty();
-  forcastIO.render(LATITUDE, LONGITUDE, COLOR, $container)
-  setTimeout(renderWeatherWidget, REFRESH_INTERVAL_MS);
+var startWeatherRenderInterval = function() {
+  var renderWeatherWidget = function() {
+    $container.empty();
+    forcastIO.render(LATITUDE, LONGITUDE, COLOR, $container)
+    setTimeout(renderWeatherWidget, REFRESH_INTERVAL_MS);
+  }
+
+  renderWeatherWidget();
 }
 
-renderWeatherWidget();
+$(document).ready(function() {
+  startWeatherRenderInterval();
+});

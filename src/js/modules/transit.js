@@ -5,6 +5,7 @@ var $ = require('jquery');
 var _ = require('lodash');
 
 var NOW = 'Now';
+var REFRESH_INTERVAL_MS = 1000;
 
 var $container = $('.Layout--Transit')[0];
 
@@ -23,9 +24,16 @@ var template =  '{{#stops}}' +
                 '<div>' +
                 '{{/stops}}';
 
+var addZeros = function(i) {
+  if (i < 10) {
+    i = "0" + i
+  };
+  return i;
+}
+
 var formatDateAsTime = function(departureDate) {
-  var hour    = departureDate.getHours();
-  var minute  = departureDate.getMinutes();
+  var hour = departureDate.getHours();
+  var minute = addZeros(departureDate.getMinutes());
   return hour + ':' + minute;
 }
 
@@ -65,22 +73,30 @@ var translateStops = function(stopList) {
   return translatedStopList;
 }
 
-var success = function(data) {
-  var view = {
-    stops: translateStops(data.data)
-  };
-  var output = Mustache.render(template, view);
-  $container.innerHTML = output;
+var startTransitRenderRefresh = function() {
+  var handleGetTransitSuccess = function(data) {
+    var view = {
+      stops: translateStops(data.data)
+    };
+    var output = Mustache.render(template, view);
+    $container.innerHTML = output;
+  }
+
+  var renderTransitData = function() {
+    var url = '/transit';
+
+    $.ajax({
+      url: url,
+      success: handleGetTransitSuccess,
+      dataType: 'json'
+    });
+
+    setTimeout(renderTransitData, REFRESH_INTERVAL_MS);
+  }
+
+  renderTransitData();
 }
 
-var refreshTransitData = function() {
-  var url = '/transit';
-
-  $.ajax({
-    url: url,
-    success: success,
-    dataType: 'json'
-  });
-}
-
-refreshTransitData();
+$(document).ready(function() {
+  startTransitRenderRefresh();
+});
