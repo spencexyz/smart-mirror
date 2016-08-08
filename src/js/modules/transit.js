@@ -23,22 +23,6 @@ var template =  '{{#stops}}' +
                 '<div>' +
                 '{{/stops}}';
 
-var view = {
-  stopName: 'Stop Name',
-  departures: [
-    {
-      lineName: 'Line Name 1',
-      timeUntilDeparture: 'Time Until Departure 1'
-    },
-    {
-      lineName: 'Line Name 2',
-      timeUntilDeparture: 'Time Until Departure 2'
-    }
-  ]
-};
-
-var url = '/transit';
-
 var formatDateAsTime = function(departureDate) {
   var hour    = departureDate.getHours();
   var minute  = departureDate.getMinutes();
@@ -90,6 +74,8 @@ var success = function(data) {
 }
 
 var refreshTransitData = function() {
+  var url = '/transit';
+
   $.ajax({
     url: url,
     success: success,

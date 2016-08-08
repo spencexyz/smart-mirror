@@ -20,8 +20,8 @@ var translateHeadlineData = function(headlineData) {
    _(headlineResults).forEach(function(headline) {
      var title = headline.title;
      var section = headline.section;
-     var subSection = headline.subsection;
-     var translatedHeadline = new HeadlineData(title, section, subSection);
+     var subsection = headline.subsection;
+     var translatedHeadline = new HeadlineData(title, section, subsection);
      headlines.push(translatedHeadline);
    });
 

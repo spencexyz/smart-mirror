@@ -2,12 +2,12 @@
 
 var title;
 var section;
-var subSection;
+var subsection;
 
-function HeadlineData(title, section, subSection) {
+function HeadlineData(title, section, subsection) {
   this.title = title;
   this.section = section;
-  this.subSection = subSection;
+  this.subsection = subsection;
 }
 
 module.exports = HeadlineData;
