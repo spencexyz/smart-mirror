@@ -6,3 +6,16 @@
 .fe_container .fe_currently {
   width: auto;
 }
+
+.fe_container .fe_daily .fe_day .fe_temp_bar {
+  font-size: $font-size-small;
+  margin: 35px auto 0;
+  
+  .fe_high_temp {
+    top: -30px;
+  }
+
+  .fe_low_temp {
+    bottom: -30px;
+  }
+}
