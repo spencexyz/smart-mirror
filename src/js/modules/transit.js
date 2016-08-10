@@ -14,15 +14,19 @@ var $container = $('.Layout--Transit')[0];
 var template =  '{{#stops}}' +
                 '<div class="Transit--stop>' +
                   '<div class="Transit--stop-name">{{stopName}}</div>' +
-                  '<ul class="Transit--departure-list">' +
+                  '<div class="Transit--departure-list">' +
                     '{{#departures}}' +
-                    '<li class="Transit--departure">' +
-                    '<div class="Transit--departure-line-name">{{lineName}}</div>' +
-                    '<div class="Transit--departure-time-to-depart">{{timeUntilDeparture}}</div>' +
-                    '<div class="Transit--departure-time-">{{departureTime}}</div>' +
-                    '</li>' +
+                    '<div class="Transit--departure">' +
+                      '<div class="Transit--departure-left">' +
+                        '<div class="Transit--departure-line-name">{{lineName}}</div>' +
+                      '</div>' +
+                      '<div class="Transit--departure-right">' +
+                        '<div class="Transit--departure-time-to-depart">{{timeUntilDeparture}}</div>' +
+                        '<div class="Transit--departure-time-">{{departureTime}}</div>' +
+                      '</div>' +
+                    '</div>' +
                     '{{/departures}}' +
-                  '</ul>' +
+                  '</div>' +
                 '<div>' +
                 '{{/stops}}';
 

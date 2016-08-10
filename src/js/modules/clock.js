@@ -3,11 +3,10 @@ var $ = require('jquery');
 var REFRESH_INTERVAL_HALF_SECOND_IN_MS = 500;
 
 var $container = $('.Layout--Clock');
-var $hour = $container.find('.Clock--hour')[0];
-var $minute = $container.find('.Clock--minute')[0];
+var $time = $container.find('.Clock--time')[0];
 var $dayOfWeek = $container.find('.Clock--day-of-week')[0];
-var $month = $container.find('.Clock--month')[0];
-var $dayOfMonth = $container.find('.Clock--day-of-month')[0];
+var $monthAndDay = $container.find('.Clock--month-and-day')[0];
+
 
 var addZeros = function(i) {
   if (i < 10) {
@@ -49,6 +48,24 @@ var getMonthNameFromDate = function(date) {
   return month[zeroIndexedMonth];
 }
 
+var formatTime = function(hour, minute) {
+  return hour + ":" + minute;
+}
+
+var nth = function(d) {
+  if(d>3 && d<21) return 'th'; // thanks kennebec
+  switch (d % 10) {
+    case 1:  return "st";
+    case 2:  return "nd";
+    case 3:  return "rd";
+    default: return "th";
+  }
+}
+
+var formatDayAndMonth = function(day, month) {
+  return month + " " + day + nth(day);
+}
+
 var startClockRenderInterval = function() {
   var renderClockWidget = function() {
     var now = new Date();
@@ -58,11 +75,10 @@ var startClockRenderInterval = function() {
     var month = getMonthNameFromDate(now);
     var dayOfMonth = now.getDate();
 
-    $hour.innerHTML = hour;
-    $minute.innerHTML = minute;
+    $time.innerHTML = formatTime(hour, minute);
     $dayOfWeek.innerHTML = dayOfWeek;
-    $month.innerHTML = month;
-    $dayOfMonth.innerHTML = dayOfMonth;
+    $monthAndDay.innerHTML = formatDayAndMonth(dayOfMonth, month);
+
     setTimeout(renderClockWidget, REFRESH_INTERVAL_HALF_SECOND_IN_MS);
   }
 
