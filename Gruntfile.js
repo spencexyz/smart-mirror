@@ -6,5 +6,6 @@ module.exports = function(grunt) {
     require('load-grunt-config')(grunt);
 
     grunt.registerTask('default', ['express:dev','watch']);
+    grunt.registerTask('offline', ['express:offline','watch']);
     grunt.registerTask('build', ['compass:dev', 'browserify:dev']);
 };
