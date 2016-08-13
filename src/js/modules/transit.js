@@ -46,7 +46,7 @@ var calculateTimeToDepart = function(departureDate) {
   if (minutesToDeparture === 0) {
     return NOW;
   }
-  return minutesToDeparture;
+  return minutesToDeparture + " Min.";
 }
 
 var translateRoutes = function(routeList) {

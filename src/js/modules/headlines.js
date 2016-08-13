@@ -15,7 +15,6 @@ var template =    '<div class="Headlines--list">' +
                     '<div class="Headlines--headline">' +
                       '<span class="Headlines--headline-section"><span>{{section}}</span></span>' +
                       '<span class="Headlines--headline-title"><span>{{title}}</span></span>' +
-                      // '<span class="Headlines--headline-subsection"><span>{{subsection}}</span></span>' +
                     '</div>' +
                     '{{/headlines}}' +
                   '</div>';
