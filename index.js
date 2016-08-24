@@ -3,11 +3,14 @@
 var express = require('express');
 var app = express();
 
+app.use(express.static(__dirname + '/public'));
+
+app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
-app.use(express.static('public'));
+
 
 app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
+  res.render('index', { title: 'Magic Mirror'});
 });
 
 var transit = require('./routes/transit');
