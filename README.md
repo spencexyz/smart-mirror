@@ -1,6 +1,8 @@
 # magic-mirror-dashboard
 Dashboard for "Magic Mirror" project. Displays weather, transit, news and other info.
 
+![](http://i.imgur.com/j1SUV3h.png)
+
 ## Setup
 
 ### Development Setup
