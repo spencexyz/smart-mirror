@@ -3,6 +3,8 @@ Dashboard for "Magic Mirror" project. Displays weather, transit, news and other 
 
 ## Setup
 
+### Development Setup
+
 1. install node & npm
 2. install ruby
 3. sudo npm install -g grunt
@@ -12,18 +14,11 @@ Dashboard for "Magic Mirror" project. Displays weather, transit, news and other 
 7. `grunt build`
 8. `node index.js`
 
+###  RPi Deployment Setup
 
-**./config/keys.json**
+#### RPi Setup
 
-```
-{
-    "one_bus_away": {
-        "secret": "SECRET CODES"
-    }
-}
-```
-
-# Raspberry Pi Setup
+Install the latest version of Raspbian. Note that this will only work on an RPi >= 2.
 
 ### Disabling the Screensaver
 
@@ -39,7 +34,7 @@ Comment out `@xscreensaver -no-splash` line of `/home/pi/.config/lxsession/LXDE-
 
 Chromium is the only browser that truly works in fullscreen mode without too much hackiness.
 
-Unfortunately it's not in Raspbian's default repos so you'll need to `wget` the `.deb` files and install them yourself using `sudo dpkg -i <package-name>`.
+Unfortunately it's not in Raspbian's default repos so you'll need to download the `.deb` files and install them yourself using `sudo dpkg -i <package-name>`.
 
 - [libgcrypt11](https://launchpad.net/ubuntu/trusty/armhf/libgcrypt11/)
 - [Chromium Codecs](https://launchpad.net/ubuntu/trusty/armhf/chromium-codecs-ffmpeg-extra)
@@ -59,3 +54,17 @@ Install unclutter `sudo apt-get install unclutter` and add the following line to
 ```
 @unclutter -idle 0.1 -root' into /etc/xdg/lxsession/LXDE/autostart
 ```
+
+### Building Assets & Deploying the NodeJS Server
+
+Realistically you should build your CSS offline and push it along with your NodeJS code to its own deployment repo, but for now I'm just building my assets from the dev repository which means I'll need my frontend dev tools installed (compass, grunt, etc).
+
+1. Install the dev version of ruby `sudo apt-get install ruby-dev`
+2. Install a modern version of NodeJS
+  - `curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -`
+  - `sudo apt-get install -y nodejs`
+3. Follow steps outlined in 'Development Setup'
+
+### Starting the node app on startup
+
+`@node /home/pi/Projects/magic-mirror-dashboard/index.js < /dev/null &`
