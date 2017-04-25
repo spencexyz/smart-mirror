@@ -15,6 +15,7 @@ var template =  '{{#stops}}' +
                 '<div class="Transit--stop">' +
                   '<div class="Transit--stop-name">{{stopName}}</div>' +
                   '<div class="Transit--departure-list">' +
+                  '{{#hasDepartures}}' +
                     '{{#departures}}' +
                     '<div class="Transit--departure">' +
                         '<div class="Transit--departure-line-name">{{lineName}}</div>' +
@@ -22,6 +23,10 @@ var template =  '{{#stops}}' +
                         '<div class="Transit--departure-time">{{departureTime}}</div>' +
                     '</div>' +
                     '{{/departures}}' +
+                  '{{/hasDepartures}}' +
+                  '{{^hasDepartures}}' +
+                  '<div class="Transit--no-departures-message">No Upcoming Departures</div>' +
+                  '{{/hasDepartures}}' +
                   '</div>' +
                 '<div>' +
                 '{{/stops}}';
@@ -68,7 +73,8 @@ var translateStops = function(stopList) {
   _(stopList).forEach(function(stop) {
     var translatedStop = {
       stopName: stop.displayName,
-      departures: translateRoutes(stop.departures)
+      departures: translateRoutes(stop.departures),
+      hasDepartures: stop.departures.length > 0
     };
     translatedStopList.push(translatedStop);
   });
