@@ -13,14 +13,17 @@ app.get('/', function (req, res) {
   res.render('index', { title: 'Magic Mirror'});
 });
 
-var transit = require('./routes/transit');
-app.use('/transit', transit);
+//var transit = require('./routes/transit');
+//app.use('/transit', transit);
 
-var headlines = require('./routes/headlines');
-app.use('/headlines', headlines);
+//var headlines = require('./routes/headlines');
+//app.use('/headlines', headlines);
 
 var weather = require('./routes/weather');
 app.use('/weather', weather);
+
+var quotes = require('./routes/quotes');
+app.use('/quotes', quotes);
 
 app.listen(4000, function () {
   console.log('Magic Mirror Dashboard on Port 4000!');
