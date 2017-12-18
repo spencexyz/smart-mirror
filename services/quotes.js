@@ -1,10 +1,9 @@
 "use strict";
 
-var QUOTES = require('../providers/quotes/provider')
+var quotes = require('../providers/quotes/provider')
 
 var getQuotes = function(callback)  {
-  console.warn('services/quotes');
-  QUOTES.retrieve(callback);
+  quotes.retrieve(callback);
 }
 
 module.exports = {

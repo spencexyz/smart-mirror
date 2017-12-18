@@ -5,13 +5,13 @@ var router = express.Router();
 
 var _ = require('lodash');
 
-var quotes = require('../services/quotes')
+var birthdays = require('../services/birthdays')
 
 router.get('/', function(req, res) {
   var callback = _.bind(function(data) {
     res.send(data);
   }, this, _);
-  quotes.get(callback);
+  birthdays.get(callback);
 });
 
 module.exports = router;

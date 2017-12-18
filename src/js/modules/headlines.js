@@ -54,6 +54,7 @@ var translateData = function(data) {
 
 var startHeadlineRenderRefresh = function() {
   var handleGetHeadlinesSuccess = function(data) {
+    console.log('handling headline success');
     var view = {
       headlines: (translateData(data.data))
     };

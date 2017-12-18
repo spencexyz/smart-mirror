@@ -6,13 +6,13 @@ var _ = require('lodash');
 
 var REFRESH_INTERVAL_10_MINUTES_IN_MS = 600000;
 
-var $container = $('.Layout--Quotes')[0];
+var $container = $('.Layout--Birthdays')[0];
 
 var template =    '<div class="Quotes--container">' +
                     '{{#quote}}' +
                     '<div class="Quotes--body">' +
-                      '<p class="Quotes--text">"{{quoteText}}"</p>' +
-                      '<p class="Quotes--author">- {{quoteAuthor}}</p>' +
+                      '<p class="Quotes--text">Happy Birthday</p>' +
+                      '<img src="/images/present.png/" height="42" width="42">' +
                     '</div>' +
                     '{{/quote}}' +
                   '</div>';
@@ -32,7 +32,6 @@ var startQuotesRenderRefresh = function() {
   }
 
   var renderQuotes = function() {
-    console.log('in render quotes');
     var url = '/quotes';
 
     $.ajax({

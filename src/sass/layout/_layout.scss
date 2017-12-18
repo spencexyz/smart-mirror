@@ -41,3 +41,33 @@
   margin-right: $margin-default;
   margin-bottom: $margin-default;
 }
+
+.Layout--Quotes {
+  max-width: 100%;
+  padding-right: 100px;
+  padding-left: 100px;
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.Quotes--text {
+  font-size: 32px;
+}
+
+.Quotes--author {
+  font-size: 22px;
+}
+
+.Layout--Birthdays {
+  max-height: 50%;
+  max-width: 30%;
+  position: fixed;
+  text-align: right;
+  right: 0;
+  top: 200px;
+  padding-right: $margin-default;
+  padding-top: $margin-default;
+}
