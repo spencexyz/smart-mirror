@@ -63,11 +63,28 @@
 
 .Layout--Birthdays {
   max-height: 50%;
-  max-width: 30%;
+  max-width: 59%;
   position: fixed;
-  text-align: right;
-  right: 0;
-  top: 200px;
-  padding-right: $margin-default;
+  text-align: left;
+  left: 0;
+  top: 300px;
+  padding-left: $margin-default;
   padding-top: $margin-default;
+}
+
+.Birthdays--body {
+  margin-bottom: 10px;
+}
+
+.present {
+  width: 58px;
+  display: inline-block;
+  float: left;
+  margin-right: 22px;
+}
+
+.birthday-name {
+  display: inline-block;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }

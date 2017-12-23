@@ -19,6 +19,9 @@ var template =    '<div class="Quotes--container">' +
 
 var startQuotesRenderRefresh = function() {
   var handleGetQuotesSuccess = function(data) {
+    if (!data.quoteAuthor) {
+      data.quoteAuthor = 'Anonymous';
+    }
     var view = {
       quote: data
     };
@@ -48,7 +51,18 @@ var startQuotesRenderRefresh = function() {
     .done(handleGetQuotesSuccess)
     .fail(handleError);
 
-    setTimeout(renderQuotes, REFRESH_INTERVAL_10_MINUTES_IN_MS);
+    var now = new Date();
+    var night = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + 1, // the next day, ...
+        0, 0, 0 // ...at 00:00:00 hours
+    );
+    var msToMidnight = night.getTime() - now.getTime();
+
+    setTimeout(function() {
+        renderQuotes();    //      Then, reset again next midnight.
+    }, msToMidnight);
   }
 
   renderQuotes();
