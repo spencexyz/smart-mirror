@@ -79,9 +79,10 @@ var startBirthdaysRenderRefresh = function() {
     }, msToMidnight);
   }
 
-  renderBirthdays();
+  getBirthdays(birthdayList);
 }
 
 $(document).ready(function() {
+  console.log('in birthdays');
   startBirthdaysRenderRefresh();
 });
