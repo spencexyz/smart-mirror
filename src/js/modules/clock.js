@@ -49,7 +49,12 @@ var getMonthNameFromDate = function(date) {
 }
 
 var formatTime = function(hour, minute) {
-  return hour + ":" + minute;
+  var end = '<span style="font-size:2.5rem;margin-left:-15px;">am</span>';
+  if (hour > 12) {
+    hour = hour - 12;
+    end = '<span style="font-size:2.5rem;margin-left:-15px;">pm</span>';
+  }
+  return hour + ":" + minute + " " + end;
 }
 
 var nth = function(d) {

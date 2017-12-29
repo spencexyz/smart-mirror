@@ -20,7 +20,6 @@ var template =    '<div class="Quotes--container">' +
 
 var startBirthdaysRenderRefresh = function() {
   var getBirthdays = function(data) {
-    console.log(data);
     let TODAY = new Date();
     TODAY.setHours(0,0,0,0);
     TODAY.setFullYear(2017)
@@ -35,6 +34,9 @@ var startBirthdaysRenderRefresh = function() {
         console.log("nope, to " + data.birthdays[i].name);
       }
     }
+
+    console.log('updating birthdays');
+    console.log(TODAY_BDAYS);
 
     var view = {
       birthdays: TODAY_BDAYS
@@ -74,7 +76,6 @@ var startBirthdaysRenderRefresh = function() {
     var msToMidnight = night.getTime() - now.getTime();
 
     setTimeout(function() {
-        getBirthdays(birthdayList);      //      <-- This is the function being called at midnight.
         renderBirthdays();    //      Then, reset again next midnight.
     }, msToMidnight);
   }
@@ -83,6 +84,5 @@ var startBirthdaysRenderRefresh = function() {
 }
 
 $(document).ready(function() {
-  console.log('in birthdays');
   startBirthdaysRenderRefresh();
 });
