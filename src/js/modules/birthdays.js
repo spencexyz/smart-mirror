@@ -51,6 +51,8 @@ var startBirthdaysRenderRefresh = function() {
   }
 
   var renderBirthdays = function() {
+    console.log('rendering bdays');
+    getBirthdays(birthdayList);
     // var url = '/quotes';
 
     // $.ajax({
@@ -80,7 +82,7 @@ var startBirthdaysRenderRefresh = function() {
     }, msToMidnight);
   }
 
-  getBirthdays(birthdayList);
+  renderBirthdays();
 }
 
 $(document).ready(function() {
